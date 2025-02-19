@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+    <h1>Giỏ hàng của bạn</h1>
+    {% if cart and cart.items.all %}
+        <ul>
+            {% for item in cart.items.all %}
+                <li>
+                    {{ item.product.name }} - {{ item.quantity }} x {{ item.product.price }} = {{ item.total_price }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Giỏ hàng trống.</p>
+    {% endif %}
+{% endblock %}
